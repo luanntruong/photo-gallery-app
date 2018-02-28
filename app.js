@@ -6,8 +6,11 @@ var bodyParser          = require("body-parser"),
     express             = require("express"),
     app                 = express();
     
+// DATABASE CONFIG
+var databaseUrl = process.env.DATABASEURL || "mongodb://localhost:/blog_app"
+mongoose.connect(databaseUrl);
+
 // APP CONFIG
-mongoose.connect("mongodb://localhost:/blog_app");
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
