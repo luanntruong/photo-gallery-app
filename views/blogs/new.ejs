@@ -1,8 +1,8 @@
-<% include ./partials/header %>
+<% include ../partials/header %>
 
 <div class="ui main text container segment">
-    <div class="ui huge header">New Blog</div>
-    <form class="ui form" action="/blogs" method="POST">
+    <div class="ui huge header">New Post</div>
+    <form class="ui form" action="/<%= currentUser._id %>/blogs" method="POST">
         <div class="field">
             <label>Title</label>
             <input type="text" name="blog[title]" placeholder="title">
@@ -20,4 +20,4 @@
     </form>
 </div>
 
-<% include ./partials/footer %>
+<% include ../partials/footer %>

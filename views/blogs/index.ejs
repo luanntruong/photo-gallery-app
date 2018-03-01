@@ -1,27 +1,27 @@
-<% include ./partials/header %>
+<% include ../partials/header %>
 
 <div class="ui main text container">
-    <div class="ui huge header">All Posts</div>
+    <div class="ui huge header">My Blogs</div>
     <div class="ui top attached segment">
         <div class="ui divided items">
-            <% if(blogs.length === 0) { %>
-                <div class="item ui"><p>Empty</p></div>
+            <% if(!user.blogs) { %>
+                <div class="item ui"><p>Your Blog is Empty. Create a new post <a href="/<%= currentUser._id %>/blogs/new"</p></div>
             <% } %>
-            <% blogs.forEach(function(blog) {%>
+            <% user.blogs.forEach(function(blog) {%>
                 <div class="item">
                     <div class="image">
                         <img src="<%= blog.image %>">
                     </div>
                     <div class="content">
-                        <a class="header" href="/<%= blog.author.id %>/blogs/<%= blog._id %>"><%=blog.title%></a>
+                        <a class="header" href="/<%= user._id %>/blogs/<%= blog._id %>"><%= blog.title %></a>
                         <div class="meta">
-                            <span><%= blog.created.toDateString() %>, posted by <a href="/<%= blog.author.id %>/blogs"><%= blog.author.username %> </a></span>
+                            <span><%= blog.created.toDateString() %></span>
                         </div>
                         <div class="description">
                             <p><%- blog.body.substring(0, 100) %>...</p>
                         </div>
                         <div class="extra">
-                            <a class="ui floated basic violet button" href="/<%= blog.author.id %>/blogs/<%= blog._id %>">
+                            <a class="ui floated basic violet button" href="/<%= user._id %>/blogs/<%= blog._id %>">
                                 Read More
                                 <i class="right chevron icon"></i>
                             </a>
@@ -35,4 +35,4 @@
 
 
 
-<% include ./partials/footer %>
+<% include ../partials/footer %>
