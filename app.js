@@ -16,7 +16,7 @@ var bodyParser          = require("body-parser"),
 // DATABASE CONFIG
 mongoose.Promise = global.Promise;
 
-const databaseUri = process.env.DATABASEURL|| 'mongodb://localhost/blog_app';
+const databaseUri = 'mongodb://luantruong:8122389Tl@ds151558.mlab.com:51558/blog';
 
 mongoose.connect(databaseUri)
       .then(() => console.log(`Database connected`))
