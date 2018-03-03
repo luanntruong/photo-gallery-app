@@ -1,7 +1,7 @@
 <% include ../partials/header %>
     <div class="row">
         <div class="input">
-            <h1 class="center">Your Note</h1>
+            <h1 class="center">Your Photo</h1>
             <form action="/<%= currentUser._id %>/photos" method="POST">
                 <div class="form-group">
                     <label for="photo[title]">Title</label>
@@ -10,10 +10,6 @@
                 <div class="form-group">
                     <label for="photo[image]">Image</label>
                     <input class="form-control" type="text" name="photo[image]"> 
-                </div>
-                <div class="form-group">
-                    <label for="photo[body]">Description</label>
-                    <textarea class="form-control" name="photo[body]" ></textarea>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-lg btn-primary btn-block">Submit</button>
