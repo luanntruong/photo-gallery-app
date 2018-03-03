@@ -1,22 +1,21 @@
-var bodyParser          = require("body-parser"),
-    // handle malicious input
+var express             = require("express"),
+    app                 = express(),
+    bodyParser          = require("body-parser"),
     expressSanitizer    = require("express-sanitizer"),
     methodOverride      = require("method-override"),
     mongoose            = require("mongoose"),
-    express             = require("express"),
-    app                 = express();
     passport            = require("passport"),
     LocalStrategy       = require("passport-local"),
     flash               = require("connect-flash"),
     User                = require("./models/user"),
-    Blog                = require("./models/blog"),
-    blogRoutes          = require("./routes/blogs"),
+    Photo                = require("./models/photo"),
+    photoRoutes          = require("./routes/photos"),
     indexRoutes         = require("./routes/index");
 
 // DATABASE CONFIG
 mongoose.Promise = global.Promise;
 
-const databaseUri = 'mongodb://luantruong:8122389Tl@ds151558.mlab.com:51558/blog';
+const databaseUri = process.env.DATABASEURL || 'mongodb://localhost:/photos_app';
 
 mongoose.connect(databaseUri)
       .then(() => console.log(`Database connected`))
@@ -53,7 +52,7 @@ app.use(function(req, res, next){
  
  // ROUTES CONFIG
 app.use("/", indexRoutes);
-app.use("/", blogRoutes);
+app.use("/", photoRoutes);
 
 // PORT LISTEN CONFIG
 app.listen(process.env.PORT, process.env.IP, function() {

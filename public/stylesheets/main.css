@@ -1,12 +1,29 @@
-i.icon {
-    font-size: 2em;
+body {
+	font-family: Roboto;
 }
 
-.container.main {
-    margin-top: 7.0em;
+/* input form */
+.input {
+	width: 30%; 
+	margin: 25px auto; 
+	padding: 25px;
 }
 
-#delete {
-    display: inline;
+/* center text */
+.center {
+	text-align: center;
 }
 
+/* container */
+.box {
+	margin: 30px auto;
+}
+
+.card {
+	margin: 20px;
+	width: 100%;
+}
+
+.delete-form {
+	display: inline-block;
+}

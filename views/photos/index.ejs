@@ -1,0 +1,32 @@
+<% include ../partials/header %>
+ 
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+        <h1 class="display-4">Your Favorite Photo Album</h1>
+        <p class="lead">Where you can find beautiful photos from all around the world</p>
+        </div>
+    </div>
+    <div class="row">
+        
+        <% if(photos.length === 0) { %>
+            <p>This Album is Empty</p>
+        <% } %>
+        
+            <% photos.forEach(function(photo) {%>
+                <div class="col-md-4 col-sm-6">
+                    <div class="card" >
+                        <img class="card-img-top" src="<%= photo.image %>" alt="Card image cap">
+                        <div class="card-body">
+                            <a class="card-link" href="/<%= photo.author.id %>/photos/<%= photo._id %>"><%= photo.title %></a>
+                            <p class="card-text">Posted by <a href="/<%= photo.author.id %>/photos"><%= photo.author.username %></a>, <%- photo.created.toDateString() %> </p>
+
+                           
+                        </div>
+                    </div>
+                </div>
+            <% }) %>            
+    </div>
+
+
+<% include ../partials/footer %>
+

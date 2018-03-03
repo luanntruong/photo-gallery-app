@@ -1,5 +1,7 @@
 var express = require("express"),
-    router  = express("router");
+    router  = express("router"),
+    passport = require("passport"),
+    User = require("../models/user");
 
 // REGISTER ROUTE
 router.get("/register", function(req, res) {
@@ -23,22 +25,22 @@ router.post("/register", function(req, res) {
         }
         passport.authenticate("local")(req, res, function(){
            req.flash("success", "Successfully Signed Up! Nice to meet you " + req.body.firstName);
-           res.redirect("/blogs"); 
+           res.redirect("/photos"); 
         });
     });
 });
 
 // LOGIN ROUTE
 router.get("/login", function(req, res) {
-    res.render("login");
+    res.render("login", {error: req.flash("error")});
 })
 
 router.post("/login", passport.authenticate("local", 
     {
-        successRedirect: "/blogs",
+        successRedirect: "/photos",
         failureRedirect: "/login",
         failureFlash: "Invalid username or password",
-        successFlash: 'Welcome to YelpCamp!'
+        successFlash: 'Welcome back'
     }), function(req, res){
 });
 
@@ -46,7 +48,7 @@ router.post("/login", passport.authenticate("local",
 router.get("/logout", function(req, res){
     req.logout();
     req.flash("success", "See you later!");
-    res.redirect("/blogs");
+    res.redirect("/photos");
  });
  
 module.exports = router;

@@ -1,0 +1,21 @@
+<% include ../partials/header %>
+<div class="row">
+        <div class="card" >
+            <img class="card-img-top" src="<%= photo.image %>" alt="Card image cap">
+            <div class="card-body">
+                
+                <p class="card-text"><%= photo.title %> <br> 
+                    Posted by <a href="/<%= photo.author.id %>/photos"><%= photo.author.username %></a><br>
+                    <%- photo.created.toDateString() %> 
+                </p>
+                <% if(currentUser && currentUser._id.equals(photo.author.id)) {%> 
+                    <a class="btn btn-warning" href="/<%= currentUser._id %>/photos/<%= photo._id %>/edit"/edit>Edit</a>
+                    <form class="delete-form" action="/<%= currentUser._id %>/photos/<%= photo._id %>?_method=DELETE" method="POST">
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
+                <% } %>
+            </div>
+        </div>
+</div>
+
+<% include ../partials/footer %>

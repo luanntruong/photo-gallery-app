@@ -1,10 +1,9 @@
 var mongoose = require("mongoose");
 
 // MONGOOSE/MODEL CONFIG
-var blogSchema = new mongoose.Schema({
+var photoSchema = new mongoose.Schema({
     title: String,
     image: String,
-    body: String,
     created: {type: Date, default: Date. now},
     author : {
         id: {
@@ -14,4 +13,4 @@ var blogSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model("Blog", blogSchema);
+module.exports = mongoose.model("Photo", photoSchema);

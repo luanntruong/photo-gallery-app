@@ -7,10 +7,10 @@ var userSchema = new mongoose.Schema({
     lastName: String,
     email: String,
     password: String,
-    blogs: [
+    photos: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            Ref: "Blog"
+            Ref: "Photo"
         }
     ]
 });
