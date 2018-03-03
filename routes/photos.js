@@ -48,7 +48,7 @@ router.post("/:userId/photos", middleware.isLoggedIn, function(req, res) {
             res.redirect("/" + req.params.userId + "/photos");
         } else {
             Photo.create(req.body.photo, function(err, newPhoto) {
-                if(err || !newphoto) {
+                if(err || !newPhoto) {
                     req.flash("error", err.message);
                     res.render("photos/new");
                 } else {
